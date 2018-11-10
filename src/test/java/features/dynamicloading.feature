@@ -12,5 +12,5 @@ Then verify text as "Hello World!"
 #Then click on "Example 2: Element rendered after the fact" link of dynamic loading page
 #Then switch to window with "url" as "https://the-internet.herokuapp.com/dynamic_loading/2"
 #Then click on Start button and verify text as "Hello World!"
-#And close application
+And close application
 
