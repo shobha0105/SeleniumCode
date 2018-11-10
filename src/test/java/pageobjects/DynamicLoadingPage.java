@@ -1,5 +1,6 @@
 package pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import generic.SeleniumBase.locators;
@@ -12,9 +13,9 @@ public class DynamicLoadingPage extends HomePage{
 	
 	
 	public WebElement getText() {
+		this.explicitWait(By.xpath(xpathexpectedText));
 		return this.IdentifyElement(locators.xpath, xpathexpectedText);	
 	}
-	
 	
 	public WebElement getStartbutton() {
 		return this.IdentifyElement(locators.xpath, xpathStartbutton);

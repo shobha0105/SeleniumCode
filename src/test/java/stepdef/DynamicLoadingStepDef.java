@@ -21,9 +21,10 @@ public class DynamicLoadingStepDef extends DynamicLoadingPage {
 	}
 	
 	@Then("^verify text as \"([^\"]*)\"$")
-	public void verify_text_as(String value){
+	public void verify_text_as(String expected_value){
 	    // Write code here that turns the phrase above into concrete actions
-	    this.performAction(this.getText(), "text", value);
+	    String actual_value = this.performAction(this.getText(), "gettext", null);
+		this.compareValue(actual_value, expected_value);
 	}
 
 

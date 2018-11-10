@@ -58,11 +58,13 @@ public abstract class SeleniumBase extends Base {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		ExpectedConditions ec = null; // object cant be created because constructor is private // ExpectedConditions
 										// is a class and ExpectedCondition is an interface
-		ExpectedCondition<WebElement> sss = ExpectedConditions.visibilityOfElementLocated(by); // object of ExpectedCondition
+		
+		//ExpectedCondition<WebElement> sss = ExpectedConditions.visibilityOfElementLocated(by); // object of ExpectedCondition
 																			// is returned (not
 																			// ExpectedConditions)
 		// function is parent of ExpecetdFunction so pass arg of until -> function/means
 		// child :expected function
+		ExpectedCondition<WebElement> sss = ExpectedConditions.visibilityOfElementLocated(by);
 		wait.until(sss);
 	}
 
@@ -152,7 +154,8 @@ public abstract class SeleniumBase extends Base {
 
 	}
 
-	public void performAction(WebElement element, String type, String value, String... extra_parameters) {
+	public String performAction(WebElement element, String type, String value, String... extra_parameters) {
+		String returnValue = null;
 		if (type.equalsIgnoreCase("click")) {
 			element.click();
 		} 
@@ -160,17 +163,8 @@ public abstract class SeleniumBase extends Base {
 			element.sendKeys(value);
 		}
 		else if (type.equalsIgnoreCase("gettext")) {
-			element.getText();
-		}
-		else if(type.equalsIgnoreCase("text")) {
-			String expectedtext = value; 
-			if(element.getText().equals(expectedtext)) {
-				System.out.println("The text "+element.getText() + " on the screen matches the expected text :"+expectedtext);
-			}
-			else {
-				System.out.println("The text "+element.getText() + " on the screen doesnt match the expected text :"+expectedtext);
-			}
-		}
+			returnValue = element.getText();
+		}		
 		else if(type.equalsIgnoreCase("dropdown")) {
 			Select sel = new Select(element); // selecting value from dropdown //select by index, by attribute value, or
 			// visible text option 1 or option 2}
@@ -220,6 +214,7 @@ public abstract class SeleniumBase extends Base {
 				
 			}
 		}
+		return returnValue;
 	}
 
 	/*public void multiplewindows() {

@@ -12,8 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import junit.framework.Assert;
+import org.junit.*;
 
 public class Base {
 public void readFile(String filename) {
@@ -46,8 +45,7 @@ public void readFile(String filename) {
 
 public void compareValue(Object actual_value, Object expected_value) {
 	Assert.assertEquals("Values are not matching", expected_value, actual_value);
-	
-	
+		
 }
 public String getCurrentDirectorypathandConcat(String path) {
 	String currentPath=System.getProperty("user.dir");
