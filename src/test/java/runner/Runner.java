@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features="src\\test\\java\\features" , 
 		glue= {"stepdef"},
-		tags= {"@FA"}, //~ for NOT //without ~ for running specific feature file
+		tags= {}, //~ for NOT //without ~ for running specific feature file
 		monochrome=true, //for the output to be readable
 		dryRun=false
 		
