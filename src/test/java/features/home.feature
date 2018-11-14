@@ -18,6 +18,7 @@
 #Sample Feature Definition Template
 Feature: To verify homepage functionality
 
+@home
 Scenario: to verify count of links on homepage
 #* launch application 
 Given launch "chrome" browser and url as "https://the-internet.herokuapp.com/"
