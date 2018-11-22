@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,22 +23,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class SeleniumBase extends Base {
 	static WebDriver driver; // interface webdriver cant be instantiated
-
+	Logger log;
+	public SeleniumBase(){
+		log = LogManager.getLogger(SeleniumBase.class);
+	}
+	
 	public enum locators {
 		id, name, className, tagName, linkText, partialLinkText, cssSelector, xpath
 	};
 
+	
+	
 	public void launchApplication(String browsername, String url) {
+		System.out.println(SeleniumBase.class);
+		
+		log.debug("Launching "+ browsername + "browser");
 		String path = null;
 		if (browsername.equalsIgnoreCase("chrome")) {
 			path = this.getCurrentDirectorypathandConcat("\\src\\test\\java\\Drivers\\chromedriver.exe");
-
 			System.setProperty("webdriver.chrome.driver", path);
-
 			driver = new ChromeDriver(); // instantiating will launch browser
 		} else if (browsername.equalsIgnoreCase("firefox")) {
 			path = this.getCurrentDirectorypathandConcat("\\src\\test\\java\\Drivers\\geckodriver.exe");
 			System.setProperty("webdriver.gecko.driver", path);
+						
 			driver = new FirefoxDriver();
 		} else if (browsername.equalsIgnoreCase("ie")) {
 			path = this.getCurrentDirectorypathandConcat("\\src\\test\\java\\Drivers\\IEDriverServer.exe");
@@ -48,7 +57,7 @@ public abstract class SeleniumBase extends Base {
 		}
 		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(url); // hit the url
-
+		log.trace("Launching "+ url + browsername + "browser");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -60,7 +69,7 @@ public abstract class SeleniumBase extends Base {
 										// is a class and ExpectedCondition is an interface
 		
 		//ExpectedCondition<WebElement> sss = ExpectedConditions.visibilityOfElementLocated(by); // object of ExpectedCondition
-																			// is returned (not
+															// is returned (not
 																			// ExpectedConditions)
 		// function is parent of ExpecetdFunction so pass arg of until -> function/means
 		// child :expected function

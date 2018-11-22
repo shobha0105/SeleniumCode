@@ -1,0 +1,7 @@
+2018-Nov-21 09:15:21 AM [main] INFO  generic.SeleniumBase - Launching chromebrowser
+2018-Nov-21 09:16:51 AM [main] INFO  generic.SeleniumBase - Launching chromebrowser
+2018-Nov-21 09:37:33 AM [main] TRACE generic.SeleniumBase - Launching chromebrowser
+2018-Nov-21 09:38:14 AM [main] TRACE generic.SeleniumBase - Launching chromebrowser
+2018-Nov-21 09:38:14 AM [main] DEBUG generic.SeleniumBase - Launching chromebrowser
+2018-Nov-21 09:43:31 AM [main] DEBUG generic.SeleniumBase - Launching chromebrowser
+2018-Nov-21 09:43:43 AM [main] TRACE generic.SeleniumBase - Launching https://the-internet.herokuapp.com/chromebrowser
